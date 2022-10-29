@@ -1,15 +1,16 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Note taker app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "arielle-elak",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "heroku": "^7.65.0"
+    "heroku": "^7.65.0",
+    "uuid": "^8.3.2"
   }
 }
