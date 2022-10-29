@@ -1,22 +1,20 @@
 const apiRouter = require('express').Router();
-const db = require('../db/db.json');
+const { readAndAppend, readFromFile } = require('../utils/fs');
 
 // GET /api/notes` should read the `db.json` file and return all saved notes as JSON
-apiRouter.get('/notes', (req, res) => {
-    readFromFile(db).then((data) =>
-    res.json(JSON.parse(data))
-    );
-    console.log("Get Note");
-});
+apiRouter.get('/', (req, res) => {
+    console.info(`${req.method} Request: Retrieve all current notes`);
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+  });
 
 // POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
-apiRouter.post('/notes', (req, res) => {
-    console.log("Post Note")
+apiRouter.post('/', (req, res) => {
+    console.info(`${req.method} Request: Post a new note`);
 });
 
 //DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete.
 apiRouter.delete('/notes', (req, res) => {
-    console.log("Delete Note");
+    console.info(`${req.method} Request: Delete a note`);
 });
 
 // Export these routes to be used by index
