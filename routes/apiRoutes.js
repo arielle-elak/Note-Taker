@@ -1,5 +1,7 @@
 const apiRouter = require('express').Router();
 const { readAndAppend, readFromFile, writeToFile } = require('../utils/fs');
+// Utility to generate a random string as an ID
+const uuid = require('../utils/uuid');
 
 // GET /api/notes` should read the `db.json` file and return all saved notes as JSON
 apiRouter.get('/', (req, res) => {
@@ -12,12 +14,13 @@ apiRouter.post('/', (req, res) => {
     console.info(`${req.method} Request: Post a new note`);
     console.log(req.body);
 
-    const { title, text } = req.body;
+    const { title, text, id } = req.body;
 
     if (req.body) {
         const newNote = {
             title,
-            text
+            text,
+            id: uuid(),
         };
         readAndAppend(newNote, './db/db.json');
         res.json(`Note added successfully`);
