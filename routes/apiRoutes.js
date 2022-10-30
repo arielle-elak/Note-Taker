@@ -30,7 +30,7 @@ apiRouter.post('/', (req, res) => {
 });
 
 //DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete.
-apiRouter.delete('/', (req, res) => {
+apiRouter.delete('/:id', (req, res) => {
     console.info(`${req.method} Request: Delete a note`);
 
 });
